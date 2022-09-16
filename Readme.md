@@ -14,4 +14,4 @@
 - At last we call function "insert" to mark the flag of the given word as true. 
 - Then we print both the strings.
 
-![] (https://img.shields.io/badge/Word%20Composition-Problem-red)
+![](https://img.shields.io/badge/Word%20Composition-Problem-red)
