@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+using namespace std::chrono;
 using namespace std;
 
 
@@ -37,7 +38,7 @@ class Solution{
         }
 
 
-     // This function will insert the word in the trie
+     // This function will insert the word in the trie.
     void insert(string word){
             Node* node=root;
             for(int i=0;i<word.length();i++){
@@ -92,15 +93,9 @@ class Solution{
             insert(words[i]);
         }
         sort(ans.begin(),ans.end(),cmp);  // Sorting is done to find the longest word
-        // for(int i=0;i<words.size();i++)
-        // cout<<ans[i]<<" ";
         string ans1="",ans2="";
         for(int i=0;i<ans.size();i++){
             st(ans[i],0,root); // Used to unmark the the flag of the word because if we didn't unmark the flag then it will always give the longest word as the answer because the flag of the word is true
-
-
-            // cout<<wordst(ans[i],0,root);
-            // cout<<ans[i]<<" ";
 
             if(search(ans[i],0,root)){ 
                 // cout<<"Reach";
@@ -113,11 +108,9 @@ class Solution{
                 }
             }
             insert(ans[i]);  // Used to mark the flag of the word as true
-
-            // cout<<wordst(ans[i],0,root);
         }
-
-        cout<<ans1<<" "<<ans2<<endl;
+        cout<<"Longest Compounded word: "<<ans1<<endl;
+        cout<<"Second Longest Compounded word: "<<ans2<<endl;
         return;
     }
 };
@@ -136,8 +129,11 @@ int main(){
             ans.push_back(s);
         }
         infile.close();
-        // infile.clear();
+       auto start = high_resolution_clock::now();
         st.longestWord(ans);
+        auto stop = high_resolution_clock::now();
+        auto duration = duration_cast<microseconds>(stop - start);
+        cout<<"Time taken to process the answer: "<<duration.count()<<" microseconds"<<endl;
     }
     return 0;
 }
